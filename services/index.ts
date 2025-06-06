@@ -1,1 +1,1 @@
-export * from './skip-service';
+export * from "./skip-service";

@@ -4,7 +4,9 @@ interface SkipFilterFormSkeletonProps {
   className?: string;
 }
 
-export function SkipFilterFormSkeleton({ className }: SkipFilterFormSkeletonProps) {
+export function SkipFilterFormSkeleton({
+  className,
+}: SkipFilterFormSkeletonProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex justify-between items-center gap-4">
@@ -57,4 +59,4 @@ export function SkipFilterFormSkeleton({ className }: SkipFilterFormSkeletonProp
       </div>
     </div>
   );
-} 
+}

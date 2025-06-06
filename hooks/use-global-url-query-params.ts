@@ -1,4 +1,10 @@
-import { useQueryStates, parseAsInteger, parseAsString, parseAsBoolean, parseAsArrayOf } from "nuqs";
+import {
+  useQueryStates,
+  parseAsInteger,
+  parseAsString,
+  parseAsBoolean,
+  parseAsArrayOf,
+} from "nuqs";
 
 export const useGlobalUrlQueryParams = () => {
   const [queryParams, setQueryParams] = useQueryStates(

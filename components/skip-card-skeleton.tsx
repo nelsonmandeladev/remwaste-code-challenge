@@ -35,4 +35,4 @@ export function SkipCardSkeleton({ className }: SkipCardSkeletonProps) {
       </div>
     </div>
   );
-} 
+}

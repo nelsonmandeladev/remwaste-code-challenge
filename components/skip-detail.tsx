@@ -1,56 +1,73 @@
-import { useGlobalUrlQueryParams } from "hooks"
-import { SKIPS } from "mocks"
-import { SkipService } from "services"
-import { IconClock, IconMapPin, IconTruck, IconWeight, IconCalculator, IconArrowRight, IconX } from "@tabler/icons-react"
+import { useGlobalUrlQueryParams } from "hooks";
+import { SKIPS } from "mocks";
+import { SkipService } from "services";
+import {
+  IconClock,
+  IconMapPin,
+  IconTruck,
+  IconWeight,
+  IconCalculator,
+  IconArrowRight,
+  IconX,
+} from "@tabler/icons-react";
 
 export function SkipDetail() {
-  const {queryParams: {selectedSkipId}, setQueryParams} = useGlobalUrlQueryParams();
-  
-  const skip = SKIPS.find(skip => skip.id === selectedSkipId);
-  
+  const {
+    queryParams: { selectedSkipId },
+    setQueryParams,
+  } = useGlobalUrlQueryParams();
+
+  const skip = SKIPS.find((skip) => skip.id === selectedSkipId);
+
   if (!skip) {
     return <div>Skip not found</div>;
   }
 
   const totalPrice = SkipService.calculateTotalPrice(skip);
   const vatAmount = skip.priceBeforeVat * (skip.vat / 100);
-  
+
   const handleCancel = () => {
     setQueryParams({ selectedSkipId: 0 });
   };
 
   const handleNext = () => {
     // TODO: Implement next step logic
-    console.log('Next step');
+    console.log("Next step");
   };
 
   return (
     <div className="h-full flex flex-col justify-between gap-6">
       <div className="space-y-4 w-full">
-        <img 
-          src={skip.imageUrl} 
-          alt={`${skip.size} yard skip`} 
+        <img
+          src={skip.imageUrl}
+          alt={`${skip.size} yard skip`}
           className="w-full h-64 object-cover rounded-b-lg"
         />
         <div className="space-y-6 p-6">
           <div className="space-y-2">
-            <h2 className="text-2xl font-semibold text-slate-800">{skip.size} Yard Skip</h2>
+            <h2 className="text-2xl font-semibold text-slate-800">
+              {skip.size} Yard Skip
+            </h2>
             <div className="flex items-center gap-2 text-slate-600">
               <IconClock size={18} />
               <span>{skip.hirePeriodDays} days hire period</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600">
               <IconMapPin size={18} />
-              <span>{skip.postcode} {skip.area}</span>
+              <span>
+                {skip.postcode} {skip.area}
+              </span>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-slate-600">Price</span>
-              <span className="text-2xl font-semibold text-slate-800">£{skip.priceBeforeVat.toFixed(2)}</span>
+              <span className="text-2xl font-semibold text-slate-800">
+                £{skip.priceBeforeVat.toFixed(2)}
+              </span>
             </div>
-            
+
             <div className="h-px bg-slate-200" />
 
             <div className="space-y-3">
@@ -135,5 +152,5 @@ export function SkipDetail() {
         </div>
       </div>
     </div>
-  )
+  );
 }

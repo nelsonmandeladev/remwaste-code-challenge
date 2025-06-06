@@ -1,1 +1,1 @@
-export * from './use-global-url-query-params';
+export * from "./use-global-url-query-params";

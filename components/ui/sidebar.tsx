@@ -1,6 +1,10 @@
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { IconAdjustmentsHorizontal, IconLayoutSidebarRightCollapse, IconX } from "@tabler/icons-react";
+import {
+  IconAdjustmentsHorizontal,
+  IconLayoutSidebarRightCollapse,
+  IconX,
+} from "@tabler/icons-react";
 import { cn } from "libs";
 import { Render } from "components/renderers/conditional";
 
@@ -17,7 +21,7 @@ interface SidebarContextProps {
 }
 
 const SidebarContext = createContext<SidebarContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export const useSidebar = () => {
@@ -76,13 +80,16 @@ export const SidebarBody = ({
 }: {
   children: React.ReactNode;
   className?: string;
-} & Omit<React.ComponentProps<typeof motion.div>, 'children'>) => {
+} & Omit<React.ComponentProps<typeof motion.div>, "children">) => {
   return (
     <>
       <DesktopSidebar className={className} {...props}>
         {children}
       </DesktopSidebar>
-      <MobileSidebar className={className} {...(props as React.ComponentProps<"div">)}>
+      <MobileSidebar
+        className={className}
+        {...(props as React.ComponentProps<"div">)}
+      >
         {children}
       </MobileSidebar>
     </>
@@ -96,17 +103,17 @@ export const DesktopSidebar = ({
 }: {
   className?: string;
   children: React.ReactNode;
-} & Omit<React.ComponentProps<typeof motion.div>, 'children' | 'animate'>) => {
+} & Omit<React.ComponentProps<typeof motion.div>, "children" | "animate">) => {
   const { open, setOpen, animate } = useSidebar();
   return (
     <>
       <motion.div
         className={cn(
           "h-full hidden md:flex md:flex-col bg-white w-[300px] shrink-0 relative",
-         {
-          "p-4": open,
-         },
-          className
+          {
+            "p-4": open,
+          },
+          className,
         )}
         animate={{
           width: animate ? (open ? "300px" : "0px") : "300px",
@@ -115,11 +122,12 @@ export const DesktopSidebar = ({
       >
         <button
           onClick={() => setOpen(!open)}
-          className={cn("absolute top-4 z-30 bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors cursor-pointer", 
+          className={cn(
+            "absolute top-4 z-30 bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors cursor-pointer",
             {
               "-right-6": open,
               "md:-right-16 xl:-right-20": !open,
-            }
+            },
           )}
           aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
         >
@@ -138,10 +146,12 @@ export const DesktopSidebar = ({
             </Render.Else>
           </Render>
         </button>
-        <div className={cn(
-          "transition-opacity duration-200",
-          open ? "opacity-100" : "opacity-0 pointer-events-none"
-        )}>
+        <div
+          className={cn(
+            "transition-opacity duration-200",
+            open ? "opacity-100" : "opacity-0 pointer-events-none",
+          )}
+        >
           {children}
         </div>
       </motion.div>
@@ -158,21 +168,18 @@ export const MobileSidebar = ({
   return (
     <>
       <div
-        className={cn(
-          "absolute left-4 top-4 z-30 flex md:hidden"
-        )}
+        className={cn("absolute left-4 top-4 z-30 flex md:hidden")}
         {...props}
       >
-         <button
+        <button
           onClick={() => setOpen(!open)}
-          className={cn("bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors"
+          className={cn(
+            "bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors",
           )}
           aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
         >
           <IconAdjustmentsHorizontal
-            className={cn(
-              "text-blue-800 transition-transform",
-            )}
+            className={cn("text-blue-800 transition-transform")}
             size={25}
           />
         </button>
@@ -188,7 +195,7 @@ export const MobileSidebar = ({
               }}
               className={cn(
                 "fixed h-full w-full inset-0 bg-white p-6 z-[100] flex flex-col justify-between",
-                className
+                className,
               )}
             >
               <div

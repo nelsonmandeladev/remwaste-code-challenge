@@ -14,7 +14,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:52.813",
     allowedOnRoad: true,
     allowsHeavyWaste: true,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg",
   },
   {
     id: 17934,
@@ -31,7 +32,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:52.992",
     allowedOnRoad: true,
     allowsHeavyWaste: true,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/5-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/5-yarder-skip.jpg",
   },
   {
     id: 17935,
@@ -48,7 +50,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:53.171",
     allowedOnRoad: true,
     allowsHeavyWaste: true,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/6-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/6-yarder-skip.jpg",
   },
   {
     id: 17936,
@@ -65,7 +68,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:53.339",
     allowedOnRoad: false,
     allowsHeavyWaste: false,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/8-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/8-yarder-skip.jpg",
   },
   {
     id: 17937,
@@ -82,7 +86,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:53.516",
     allowedOnRoad: false,
     allowsHeavyWaste: false,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/10-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/10-yarder-skip.jpg",
   },
   {
     id: 17938,
@@ -99,7 +104,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:53.69",
     allowedOnRoad: false,
     allowsHeavyWaste: false,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/12-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/12-yarder-skip.jpg",
   },
   {
     id: 17939,
@@ -116,7 +122,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:53.876",
     allowedOnRoad: false,
     allowsHeavyWaste: false,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/14-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/14-yarder-skip.jpg",
   },
   {
     id: 15124,
@@ -133,7 +140,8 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:52.434",
     allowedOnRoad: false,
     allowsHeavyWaste: true,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/16-yarder-skip.jpg"
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/16-yarder-skip.jpg",
   },
   {
     id: 15125,
@@ -150,6 +158,7 @@ export const SKIPS: Skip[] = [
     updatedAt: "2025-04-07T13:16:52.603",
     allowedOnRoad: false,
     allowsHeavyWaste: false,
-    imageUrl: "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/40-yarder-skip.jpg"
-  }
+    imageUrl:
+      "https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/40-yarder-skip.jpg",
+  },
 ] as const;

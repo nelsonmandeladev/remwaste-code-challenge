@@ -1,24 +1,69 @@
-# Welcome to React Router!
+# RemWaste Code Challenge
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A modern, full-stack React application built with React Router, TypeScript, and TailwindCSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Project Overview
 
-## Features
+This project is a code challenge implementation that demonstrates modern web development practices and best practices in React application development.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Tech Stack
+
+### Core Technologies
+
+- ⚛️ React 19
+- 🎯 TypeScript
+- 🛣️ React Router 7
+- 🎨 TailwindCSS 4
+- ⚡️ Vite 6
+
+### Key Libraries
+
+- `@tabler/icons-react` - Modern icon library
+- `clsx` & `tailwind-merge` - Utility libraries for class name management
+- `motion` - Animation library
+- `nuqs` - URL state management
+
+## Project Structure
+
+```
+├── app/              # Main application routes and pages
+├── components/       # Reusable React components
+├── hooks/           # Custom React hooks
+├── libs/            # Utility functions and shared logic
+├── public/          # Static assets
+├── services/        # API and external service integrations
+├── types/           # TypeScript type definitions
+└── mocks/           # Mock data for development
+```
+
+## Top Features
+
+- 🚀 Modern React with Server-Side Rendering
+- ⚡️ Hot Module Replacement (HMR) for fast development
+- 📦 Optimized production builds
+- 🔒 TypeScript for type safety
+- 🎨 TailwindCSS for utility-first styling
+- 📱 Responsive design
+- 🔄 Efficient data loading and state management
+- 🎯 Clean and maintainable code structure
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn package manager
+
 ### Installation
 
-Install the dependencies:
+1. Clone the repository:
+
+```bash
+git clone [repository-url]
+cd remwaste-code-chalenge
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
@@ -26,13 +71,21 @@ npm install
 
 ### Development
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+The application will be available at `http://localhost:5173`.
+
+### Type Checking
+
+Run TypeScript type checking:
+
+```bash
+npm run typecheck
+```
 
 ## Building for Production
 
@@ -42,46 +95,33 @@ Create a production build:
 npm run build
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+Start the production server:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm start
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## Contributing
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### DIY Deployment
+### Code Style Guidelines
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+- Follow TypeScript best practices
+- Use functional components with hooks
+- Implement proper error handling
+- Write meaningful commit messages
+- Add appropriate comments and documentation
+- Follow the existing project structure
 
-Make sure to deploy the output of `npm run build`
+## License
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+This project is proprietary and confidential.
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ using React Router and modern web technologies.

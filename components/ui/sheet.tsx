@@ -39,7 +39,7 @@ export const Sheet = ({
             }}
             className={cn(
               "fixed h-full inset-y-0 right-0 z-[100] flex flex-col",
-              className
+              className,
             )}
           >
             <div className="w-full md:w-[400px] h-full bg-white shadow-lg relative">
@@ -52,9 +52,7 @@ export const Sheet = ({
                   <IconX className="w-5 h-5" />
                 </button>
               </div>
-              <div className="h-full overflow-y-auto">
-                {children}
-              </div>
+              <div className="h-full overflow-y-auto">{children}</div>
             </div>
           </motion.div>
         </>

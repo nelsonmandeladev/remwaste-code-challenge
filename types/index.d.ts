@@ -32,8 +32,7 @@ declare type Skip = {
   readonly allowsHeavyWaste: boolean;
   /** Whether the skip allows heavy waste */
   readonly imageUrl: string;
-} 
-
+};
 
 declare type SkipFilter = {
   size?: number | number[];
@@ -57,26 +56,26 @@ declare type SkipFilter = {
     from?: Date;
     to?: Date;
   };
-}
+};
 
 declare type SkipFilterResult = {
   skips: Skip[];
   total: number;
   filtered: number;
   appliedFilters: Partial<SkipFilter>;
-}
+};
 
-declare type SkipSizeCategory = 'small' | 'medium' | 'large' | 'extra-large';
+declare type SkipSizeCategory = "small" | "medium" | "large" | "extra-large";
 
 declare type SkipPriceRange = {
   min: number;
   max: number;
   average: number;
-}
+};
 
 declare type SkipFilterStats = {
   sizeCategories: Record<SkipSizeCategory, number>;
   priceRange: SkipPriceRange;
   availablePostcodes: string[];
   availableAreas: string[];
-} 
+};

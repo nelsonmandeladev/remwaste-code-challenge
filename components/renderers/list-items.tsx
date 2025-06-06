@@ -6,11 +6,11 @@ import type { ReactNode, ReactElement } from "react";
  * @template T - The type of items in the list
  */
 type ListItemRenderProps<T> = {
-    /** Function to render each item in the list */
-    render: (item: T, index: number) => ReactElement,
-    /** Array of items to render */
-    items: T[]
-}
+  /** Function to render each item in the list */
+  render: (item: T, index: number) => ReactElement;
+  /** Array of items to render */
+  items: T[];
+};
 
 /**
  * A component that renders a list of items using a provided render function.
@@ -28,4 +28,8 @@ type ListItemRenderProps<T> = {
  * />
  * ```
  */
-export const ListItemRender = <T,>({ render, items }: ListItemRenderProps<T>): ReactNode => Children.toArray(items.map((item: T, index: number) => render(item, index)));
+export const ListItemRender = <T,>({
+  render,
+  items,
+}: ListItemRenderProps<T>): ReactNode =>
+  Children.toArray(items.map((item: T, index: number) => render(item, index)));

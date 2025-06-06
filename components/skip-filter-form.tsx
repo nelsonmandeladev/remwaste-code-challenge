@@ -4,13 +4,15 @@ import { useGlobalUrlQueryParams } from "hooks";
 import { SkipService } from "services";
 import { SkipFilterFormSkeleton } from "./skip-filter-form-skeleton";
 
-
 interface SkipFilterFormProps {
   skips: Skip[];
   onFilterChange?: (filter: SkipFilter) => void;
 }
 
-export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) => {
+export const SkipFilterForm = ({
+  skips,
+  onFilterChange,
+}: SkipFilterFormProps) => {
   const { queryParams, setQueryParams } = useGlobalUrlQueryParams();
   const [stats, setStats] = useState<SkipFilterStats | null>(null);
 
@@ -33,11 +35,11 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
   };
 
   const handleSizeChange = (category: string) => {
-    console.log({category})
+    console.log({ category });
 
     const currentSizes = queryParams.skipSize || [];
     const newSizes = currentSizes.includes(category)
-      ? currentSizes.filter(s => s !== category)
+      ? currentSizes.filter((s) => s !== category)
       : [...currentSizes, category];
     setQueryParams({ skipSize: newSizes });
   };
@@ -46,7 +48,15 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
     setQueryParams({ minPrice: min, maxPrice: max });
   };
 
-  const handleFeatureToggle = (feature: keyof Pick<SkipFilter, 'allowedOnRoad' | 'allowsHeavyWaste' | 'hasTransportCost' | 'hasPerTonneCost'>) => {
+  const handleFeatureToggle = (
+    feature: keyof Pick<
+      SkipFilter,
+      | "allowedOnRoad"
+      | "allowsHeavyWaste"
+      | "hasTransportCost"
+      | "hasPerTonneCost"
+    >,
+  ) => {
     setQueryParams({ [feature]: !queryParams[feature] });
   };
 
@@ -74,16 +84,18 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
     <Render>
       <Render.If isTrue={!!stats}>
         <div className="space-y-6">
-        <div className="flex justify-between items-center gap-4">
-          <h3 className="text-lg font-semibold text-slate-800">Skips filters</h3>
-          <Render.If isTrue={hasActiveFilters()}>
-          <button
+          <div className="flex justify-between items-center gap-4">
+            <h3 className="text-lg font-semibold text-slate-800">
+              Skips filters
+            </h3>
+            <Render.If isTrue={hasActiveFilters()}>
+              <button
                 onClick={handleClearFilters}
                 className="px-4 py-0 text-sm text-gray-600 hover:text-gray-800 cursor-pointer"
               >
                 Clear Filters
               </button>
-          </Render.If>
+            </Render.If>
           </div>
           {/* Size Filter */}
           <div className="space-y-2">
@@ -96,9 +108,9 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
                     key={category}
                     onClick={() => handleSizeChange(category)}
                     className={`px-3 py-1 rounded-full text-sm ${
-                      queryParams.skipSize?.includes(category) 
-                        ? 'bg-blue-100 text-blue-800' 
-                        : 'bg-gray-100 text-gray-800'
+                      queryParams.skipSize?.includes(category)
+                        ? "bg-blue-100 text-blue-800"
+                        : "bg-gray-100 text-gray-800"
                     }`}
                   >
                     {category} ({count})
@@ -114,15 +126,25 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
             <div className="flex flex-col gap-2.5">
               <input
                 type="number"
-                value={queryParams.minPrice || ''}
-                onChange={(e) => handlePriceRangeChange(Number(e.target.value), queryParams.maxPrice || 0)}
+                value={queryParams.minPrice || ""}
+                onChange={(e) =>
+                  handlePriceRangeChange(
+                    Number(e.target.value),
+                    queryParams.maxPrice || 0,
+                  )
+                }
                 placeholder="Min price"
                 className="w-full px-3 py-2 border border-slate-500 rounded"
               />
               <input
                 type="number"
-                value={queryParams.maxPrice || ''}
-                onChange={(e) => handlePriceRangeChange(queryParams.minPrice || 0, Number(e.target.value))}
+                value={queryParams.maxPrice || ""}
+                onChange={(e) =>
+                  handlePriceRangeChange(
+                    queryParams.minPrice || 0,
+                    Number(e.target.value),
+                  )
+                }
                 placeholder="Max price"
                 className="w-full px-3 py-2 border border-slate-500 rounded"
               />
@@ -135,7 +157,9 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
             <div className="flex flex-col gap-4">
               <select
                 value={queryParams.postcode}
-                onChange={(e) => handleLocationChange(e.target.value, queryParams.area)}
+                onChange={(e) =>
+                  handleLocationChange(e.target.value, queryParams.area)
+                }
                 className="px-3 py-2 border rounded border-slate-500 flex-1"
               >
                 <option value="">Select Postcode</option>
@@ -150,7 +174,9 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
               </select>
               <select
                 value={queryParams.area}
-                onChange={(e) => handleLocationChange(queryParams.postcode, e.target.value)}
+                onChange={(e) =>
+                  handleLocationChange(queryParams.postcode, e.target.value)
+                }
                 className="px-3 py-2 border rounded border-slate-500 flex-1"
               >
                 <option value="">Select Area</option>
@@ -172,25 +198,39 @@ export const SkipFilterForm = ({ skips, onFilterChange }: SkipFilterFormProps) =
             <div className="grid grid-cols-1 gap-2.5">
               <ListItemRender
                 items={[
-                  { key: 'allowedOnRoad', label: 'Allowed on Road' },
-                  { key: 'allowsHeavyWaste', label: 'Allows Heavy Waste' },
-                  { key: 'hasTransportCost', label: 'Has Transport Cost' },
-                  { key: 'hasPerTonneCost', label: 'Has Per Tonne Cost' }
+                  { key: "allowedOnRoad", label: "Allowed on Road" },
+                  { key: "allowsHeavyWaste", label: "Allows Heavy Waste" },
+                  { key: "hasTransportCost", label: "Has Transport Cost" },
+                  { key: "hasPerTonneCost", label: "Has Per Tonne Cost" },
                 ]}
                 render={({ key, label }) => (
                   <label key={key} className="flex items-center space-x-2">
                     <input
                       type="checkbox"
-                      checked={queryParams[key as keyof typeof queryParams] as boolean}
-                      onChange={() => handleFeatureToggle(key as keyof Pick<SkipFilter, 'allowedOnRoad' | 'allowsHeavyWaste' | 'hasTransportCost' | 'hasPerTonneCost'>)}
+                      checked={
+                        queryParams[key as keyof typeof queryParams] as boolean
+                      }
+                      onChange={() =>
+                        handleFeatureToggle(
+                          key as keyof Pick<
+                            SkipFilter,
+                            | "allowedOnRoad"
+                            | "allowsHeavyWaste"
+                            | "hasTransportCost"
+                            | "hasPerTonneCost"
+                          >,
+                        )
+                      }
                       className="peer border-slate-500 data-[state=checked]:bg-blue-800 data-[state=checked]:text-primary-foreground data-[state=checked]:border-blue-900 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 aria-invalid:border-destructive size-5 shrink-0 rounded-[4px] border transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
                     />
-                    <span className="text-slate-500 text-sm font-normal">{label}</span>
+                    <span className="text-slate-500 text-sm font-normal">
+                      {label}
+                    </span>
                   </label>
                 )}
               />
             </div>
-          </div>                    
+          </div>
         </div>
       </Render.If>
       <Render.Else>

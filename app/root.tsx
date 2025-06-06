@@ -34,9 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="flex justify-center bg-blue-500">
-       <div className="container">
-       {children}
-       </div>
+        <div className="container">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -47,9 +45,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <NuqsAdapter>
-    <Outlet />
-  </NuqsAdapter>
-  )
+      <Outlet />
+    </NuqsAdapter>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

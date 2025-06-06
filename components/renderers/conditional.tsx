@@ -1,26 +1,26 @@
-import React from 'react';
-import type { ReactNode, ReactElement } from 'react';
+import React from "react";
+import type { ReactNode, ReactElement } from "react";
 
 /**
  * Props for the main Render component
  */
 interface RenderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 /**
  * Props for the conditional rendering component
  */
 interface RenderWhenProps {
-    isTrue: boolean;
-    children: ReactNode;
+  isTrue: boolean;
+  children: ReactNode;
 }
 
 /**
  * Props for the fallback component
  */
 interface RenderElseProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 /**
@@ -39,30 +39,30 @@ interface RenderElseProps {
  * ```
  */
 const Render: React.FC<RenderProps> & {
-    If: React.FC<RenderWhenProps>;
-    Else: React.FC<RenderElseProps>;
+  If: React.FC<RenderWhenProps>;
+  Else: React.FC<RenderElseProps>;
 } = (props) => {
-    // Track the first matching condition and fallback
-    let condition: ReactElement | null = null;
-    let otherwise: ReactElement | null = null;
+  // Track the first matching condition and fallback
+  let condition: ReactElement | null = null;
+  let otherwise: ReactElement | null = null;
 
-    // Iterate through children to find the first matching condition and fallback
-    React.Children.forEach(props.children, (child) => {
-        if (React.isValidElement(child)) {
-            const childProps = child.props as { isTrue?: boolean };
-            // If no isTrue prop, treat as fallback
-            if (childProps.isTrue === undefined) {
-                otherwise = child as ReactElement;
-            } 
-            // If has isTrue prop and it's true, and we haven't found a condition yet
-            else if (!condition && childProps.isTrue === true) {
-                condition = child as ReactElement;
-            }
-        }
-    });
+  // Iterate through children to find the first matching condition and fallback
+  React.Children.forEach(props.children, (child) => {
+    if (React.isValidElement(child)) {
+      const childProps = child.props as { isTrue?: boolean };
+      // If no isTrue prop, treat as fallback
+      if (childProps.isTrue === undefined) {
+        otherwise = child as ReactElement;
+      }
+      // If has isTrue prop and it's true, and we haven't found a condition yet
+      else if (!condition && childProps.isTrue === true) {
+        condition = child as ReactElement;
+      }
+    }
+  });
 
-    // Return the first matching condition, or fallback, or null
-    return condition || otherwise || null;
+  // Return the first matching condition, or fallback, or null
+  return condition || otherwise || null;
 };
 
 /**
@@ -73,8 +73,8 @@ const Render: React.FC<RenderProps> & {
  * @param {ReactNode} props.children - The content to render when condition is true
  * @returns {ReactElement | null} The rendered content or null
  */
-const RenderWhen: React.FC<RenderWhenProps> = ({ isTrue, children }) => 
-    (isTrue ? (children as ReactElement) : null);
+const RenderWhen: React.FC<RenderWhenProps> = ({ isTrue, children }) =>
+  isTrue ? (children as ReactElement) : null;
 
 /**
  * Component for rendering fallback content when no conditions are met
@@ -83,8 +83,8 @@ const RenderWhen: React.FC<RenderWhenProps> = ({ isTrue, children }) =>
  * @param {ReactNode} props.children - The fallback content to render
  * @returns {ReactElement} The rendered fallback content
  */
-const RenderElse: React.FC<RenderElseProps> = ({ children }) => 
-    children as ReactElement;
+const RenderElse: React.FC<RenderElseProps> = ({ children }) =>
+  children as ReactElement;
 
 // Attach sub-components to the main Render component
 Render.If = RenderWhen;
