@@ -28,7 +28,7 @@ export function SkipCardSkeleton({ className }: SkipCardSkeletonProps) {
         </div>
 
         {/* Location info */}
-        <div className="space-y-2 flex justify-between items-center gap-2.5">
+        <div className="flex justify-between items-center gap-2.5">
           <div className="h-5 w-40 bg-slate-200 rounded animate-pulse" />
           <div className="h-7 w-20 bg-slate-200 rounded-full animate-pulse" />
         </div>
