@@ -27,7 +27,7 @@ export function SkipCard({ skip }: SkipCardProps) {
             alt={`${skip.size} yard skip`}
             className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
           />
-          <div className="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute top-2 right-2 bg-blue-600/10 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
             {skip.size} Yard
           </div>
         </div>
