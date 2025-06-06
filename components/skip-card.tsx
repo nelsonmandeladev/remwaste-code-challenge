@@ -1,5 +1,9 @@
-import { IconClock } from '@tabler/icons-react';
+import { IconArrowRight, IconClock } from '@tabler/icons-react';
+import { useGlobalUrlQueryParams } from 'hooks';
+import { cn } from 'libs';
+import React from 'react';
 import { SkipService } from 'services';
+import { Sheet } from './ui';
 
 /**
  * Props for the SkipCard component
@@ -13,8 +17,10 @@ interface SkipCardProps {
  * Component that displays a single skip card with its details
  */
 export function SkipCard({ skip }: SkipCardProps) {
+  const {queryParams, setQueryParams} = useGlobalUrlQueryParams();
   return (
-    <div className="bg-white rounded-lg overflow-hidden group hover:shadow-2xl transform-fill duration-300">
+   <React.Fragment>
+     <div className="bg-white rounded-lg overflow-hidden group hover:shadow-2xl transform-fill duration-300">
       <div className="relative h-64 overflow-hidden">
         <img
           src={skip.imageUrl}
@@ -52,11 +58,22 @@ export function SkipCard({ skip }: SkipCardProps) {
             </span>
           )}
         </div>
+        <div className="flex justify-between items-center gap-2.5">
         <div className="text-sm text-gray-600">
           <p>Postcode: {skip.postcode}</p>
           {skip.area && <p>Area: {skip.area}</p>}
         </div>
+        <button 
+        className={cn('flex items-center gap-2.5 text-sm border border-blue-800 rounded-full px-4 py-1 text-blue-800 hover:bg-blue-800 hover:text-white cursor-pointer transition-all duration-300', {
+          "bg-blue-800 text-white": skip.id === queryParams.selectedSkipId
+        })}
+          onClick={() => setQueryParams({selectedSkipId: skip.id !== queryParams.selectedSkipId ? skip.id : 0})}
+        >
+          Select <IconArrowRight size={16} />
+        </button>
+        </div>
       </div>
     </div>
+   </React.Fragment>
   );
 }

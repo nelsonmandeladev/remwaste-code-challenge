@@ -1,7 +1,8 @@
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { IconLayoutSidebarRightCollapse, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconAdjustmentsHorizontal, IconLayoutSidebarRightCollapse, IconX } from "@tabler/icons-react";
 import { cn } from "libs";
+import { Render } from "components/renderers/conditional";
 
 interface Links {
   label: string;
@@ -114,21 +115,28 @@ export const DesktopSidebar = ({
       >
         <button
           onClick={() => setOpen(!open)}
-          className={cn("absolute top-4 z-30 bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors", 
+          className={cn("absolute top-4 z-30 bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors cursor-pointer", 
             {
               "-right-6": open,
-              "-right-16": !open,
+              "md:-right-16 xl:-right-20": !open,
             }
           )}
           aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
         >
-          <IconLayoutSidebarRightCollapse
-            className={cn(
-              "text-blue-800 transition-transform",
-              open ? "rotate-180" : ""
-            )}
-            size={25}
-          />
+          <Render>
+            <Render.If isTrue={open}>
+              <IconLayoutSidebarRightCollapse
+                className="text-blue-800 transition-transform"
+                size={25}
+              />
+            </Render.If>
+            <Render.Else>
+              <IconAdjustmentsHorizontal
+                className="text-blue-800 transition-transform"
+                size={25}
+              />
+            </Render.Else>
+          </Render>
         </button>
         <div className={cn(
           "transition-opacity duration-200",
@@ -151,16 +159,23 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 w-full"
+          "absolute left-4 top-4 z-30 flex md:hidden"
         )}
         {...props}
       >
-        <div className="flex justify-end z-20 w-full">
-          <IconMenu2
-            className="text-neutral-800"
-            onClick={() => setOpen(!open)}
+         <button
+          onClick={() => setOpen(!open)}
+          className={cn("bg-white-100 rounded-full size-12 flex items-center justify-center shadow-xl bg-white transition-colors"
+          )}
+          aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
+        >
+          <IconAdjustmentsHorizontal
+            className={cn(
+              "text-blue-800 transition-transform",
+            )}
+            size={25}
           />
-        </div>
+        </button>
         <AnimatePresence>
           {open && (
             <motion.div
@@ -172,12 +187,12 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-white p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-white p-6 z-[100] flex flex-col justify-between",
                 className
               )}
             >
               <div
-                className="absolute right-10 top-10 z-50"
+                className="absolute right-4 top-4 z-50"
                 onClick={() => setOpen(!open)}
               >
                 <IconX />

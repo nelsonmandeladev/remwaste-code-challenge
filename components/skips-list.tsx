@@ -4,15 +4,17 @@ import { SkipCard } from "./skip-card";
 import { cn } from "libs";
 import { useGlobalUrlQueryParams } from "hooks";
 import { SkipService } from "services";
-import { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { SkipCardSkeleton } from "./skip-card-skeleton";
 import { EmptyState } from "./empty-state";
+import { Sheet } from "./ui";
+import { SkipDetail } from "./skip-detail";
 
 /**
  * Component that displays a grid of available skips
  */
 export function SkipsList() {
-  const { queryParams } = useGlobalUrlQueryParams();
+  const { queryParams, setQueryParams } = useGlobalUrlQueryParams();
   const [isLoading, setIsLoading] = useState(true); // Start with loading true
   const [isInitialLoad, setIsInitialLoad] = useState(true); // Track initial load
   const [filteredSkips, setFilteredSkips] = useState<Skip[]>([]);
@@ -79,6 +81,7 @@ export function SkipsList() {
 
   // Show filtered results
   return (
+    <React.Fragment>
     <div className={cn("w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6", {
       "md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3": queryParams.filterFormOpen
     })}>
@@ -87,5 +90,12 @@ export function SkipsList() {
         render={(skip) => <SkipCard key={skip.id} skip={skip} />}
       />
     </div>
+    <Sheet 
+      isOpen={queryParams.selectedSkipId ? true : false} 
+      setIsOpen={() => setQueryParams({selectedSkipId: 0})}
+    >
+      <SkipDetail />
+    </Sheet>
+    </React.Fragment>
   );
 }

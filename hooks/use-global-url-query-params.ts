@@ -20,7 +20,8 @@ export const useGlobalUrlQueryParams = () => {
       createdAtTo: parseAsString.withDefault(""),
       updatedAtFrom: parseAsString.withDefault(""),
       updatedAtTo: parseAsString.withDefault(""),
-      filterFormOpen: parseAsBoolean.withDefault(true)
+      filterFormOpen: parseAsBoolean.withDefault(true),
+      selectedSkipId: parseAsInteger.withDefault(0),
     },
     {
       history: "push",

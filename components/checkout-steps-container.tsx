@@ -25,8 +25,8 @@ export function CheckoutStepsContainer({ steps, activeIndex }: CheckoutStepsCont
   const {queryParams} = useGlobalUrlQueryParams();
 
   return (
-    <div className={cn(" w-full flex items-center bg-white/50 backdrop-blur-lg rounded-full p-4 overflow-x-auto transition-all duration-300", {
-      "md:w-[97%]": !queryParams.filterFormOpen,
+    <div className={cn("w-[83%] md:w-[96%] flex items-center bg-white/50 backdrop-blur-lg rounded-full p-4 overflow-x-auto transition-all duration-300", {
+      "md:w-[90%] xl:w-[96%]": !queryParams.filterFormOpen,
     })}>
       {steps.map((step, index) => (
         <React.Fragment key={index}>
