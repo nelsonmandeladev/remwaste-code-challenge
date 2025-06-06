@@ -83,7 +83,7 @@ export const SkipFilterForm = ({
   return (
     <Render>
       <Render.If isTrue={!!stats}>
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-y-auto relative">
           <div className="flex justify-between items-center gap-4">
             <h3 className="text-lg font-semibold text-slate-800">
               Skips filters
@@ -230,6 +230,15 @@ export const SkipFilterForm = ({
                 )}
               />
             </div>
+          </div>
+          {/* Mobile Apply Filters Button */}
+          <div className="p-4 bg-white border-t border-slate-200 md:hidden mt-10 sticky bottom-0 z-10">
+            <button
+              onClick={() => setQueryParams({ filterFormOpen: false })}
+              className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              Apply Filters
+            </button>
           </div>
         </div>
       </Render.If>
