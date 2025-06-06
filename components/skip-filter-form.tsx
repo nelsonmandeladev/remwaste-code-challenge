@@ -122,7 +122,7 @@ export const SkipFilterForm = ({
 
           {/* Price Range */}
           <div className="space-y-2">
-            <h6 className="font-normal text-slate-600">Price Range</h6>
+            <h6 className="font-normal text-slate-600">Price Range (£)</h6>
             <div className="flex flex-col gap-2.5">
               <input
                 type="number"
